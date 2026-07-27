@@ -12,24 +12,32 @@ NOTE :
 987 should not be shown because the first digit is not less than the second.
 */
 
-int main()
+
+namespace piscine
 {
-    for (short i = 0; i <= 9; i++)
+    void PrintComb()
     {
-        for (short j = i+1; j <= 9; j++)
+        for (short i = 0; i <= 9; i++)
         {
-            for (short k = j+1; k <= 9; k++)
+            for (short j = i+1; j <= 9; j++)
             {
-                std::cout << i << j << k;
-                if (!(i == 7 && j == 8 && k == 9))
+                for (short k = j+1; k <= 9; k++)
                 {
-                    std::cout << ", ";
-                } 
+                    std::cout << i << j << k;
+
+                    if (!(i == 7 && j == 8 && k == 9))
+                        std::cout << ", ";
+                }
             }
         }
-    }
 
-    std::cout << "\n";
+        std::cout << "\n";
+    }
+}
+
+int main()
+{
+    piscine::PrintComb();
 
     return EXIT_SUCCESS;
 }
