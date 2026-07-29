@@ -1,5 +1,6 @@
 #include <iostream>
 #include "include/quadA.hpp" 
+#include "include/quadB.hpp"
 
 int main()
 {
