@@ -2,6 +2,7 @@
 #include "include/quadA.hpp" 
 #include "include/quadB.hpp"
 #include "include/quadC.hpp"
+#include "include/quadD.hpp"
 
 int main()
 {
@@ -34,4 +35,14 @@ int main()
     QuadC(1,1);
     std::cout << "QuadC(1,5)\n";
     QuadC(1,5);
+
+    std::cout << "\n============== QUAD D ===============\n";
+    std::cout << "QuadD(5,3)\n";
+    QuadD(5,3);
+    std::cout << "QuadD(5,1)\n";
+    QuadD(5,1);
+    std::cout << "QuadD(1,1)\n";
+    QuadD(1,1);
+    std::cout << "QuadD(1,5)\n";
+    QuadD(1,5);
 }
