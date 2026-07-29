@@ -32,35 +32,34 @@ o
 o
 */
 
-// QuadA(5,3)
 void QuadA(int x, int y)
 {
-    for (int i {1}; i <= 3; ++i) // Rows
+    for (int i {1}; i <= y; ++i) // Rows
     {
-        for (int j {1}; j <= 5; ++j) // Columns
+        for (int j {1}; j <= x; ++j) // Columns
         {
             // Top Corners
-            if(i == 1 && (j == 1 || j == 5)) 
+            if(i == 1 && (j == 1 || j == x)) 
                 std::cout << "o";
 
             // Bottom Corners
-            else if (i == 3 && (j == 1 || j == 5))
+            else if (i == y && (j == 1 || j == x))
                 std::cout << "o";
             
             // Top middle horizontal section
-            else if (i == 1 && j > 1 && j < 5) 
+            else if (i == 1 && j > 1 && j < x) 
                 std::cout << "-";
             
             // Bottom middle horizontal section
-            else if (i == 3 && j > 1 && j < 5)
+            else if (i == y && j > 1 && j < x)
                 std::cout << "-";
 
             // Right middle vertical section
-            else if (j == 1 && i > 1 && i < 3)
+            else if (j == 1 && i > 1 && i < y)
                 std::cout << "|";
 
             // Left middle vertical section
-            else if (j == 5 && i > 1 && i < 3)
+            else if (j == x && i > 1 && i < y)
                 std::cout << "|";
 
             else 
