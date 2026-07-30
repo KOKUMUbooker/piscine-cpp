@@ -14,7 +14,7 @@ func AlphaCount(s string) int {
 
 namespace piscine
 {
-    int AlphaCount(std::string s)
+    int AlphaCount(std::string& s)
     {
         int count {0};
         for (const char& sChar : s)
