@@ -31,45 +31,49 @@ B
 C
 */
 
-void QuadE(int x, int y)
+namespace piscine
 {
-    for (int i {1}; i <= y; ++i) // Rows
+    void QuadE(int x, int y)
     {
-        for (int j {1}; j <= x; ++j) // Columns
+        for (int i {1}; i <= y; ++i) // Rows
         {
-            // Top Corners
-            if(i == 1 && j == 1) 
-                std::cout << "A";
-            else if(i == 1 && j == x) 
-                std::cout << "C";
+            for (int j {1}; j <= x; ++j) // Columns
+            {
+                // Top Corners
+                if(i == 1 && j == 1) 
+                    std::cout << "A";
+                else if(i == 1 && j == x) 
+                    std::cout << "C";
+    
+                // Bottom Corners
+                else if (i == y && j == 1)
+                    std::cout << "C";
+                else if (i == y && j == x)
+                    std::cout << "A";
+                
+                // Top middle horizontal section
+                else if (i == 1 && j > 1 && j < x) 
+                    std::cout << "B";
+                
+                // Bottom middle horizontal section
+                else if (i == y && j > 1 && j < x)
+                    std::cout << "B";
+    
+                // Right middle vertical section
+                else if (j == 1 && i > 1 && i < y)
+                    std::cout << "B";
+    
+                // Left middle vertical section
+                else if (j == x && i > 1 && i < y)
+                    std::cout << "B";
+    
+                else 
+                    std::cout << " ";
+                
+            }
+    
+            std::cout << "\n";
+        } 
+    }
+} 
 
-            // Bottom Corners
-            else if (i == y && j == 1)
-                std::cout << "C";
-            else if (i == y && j == x)
-                std::cout << "A";
-            
-            // Top middle horizontal section
-            else if (i == 1 && j > 1 && j < x) 
-                std::cout << "B";
-            
-            // Bottom middle horizontal section
-            else if (i == y && j > 1 && j < x)
-                std::cout << "B";
-
-            // Right middle vertical section
-            else if (j == 1 && i > 1 && i < y)
-                std::cout << "B";
-
-            // Left middle vertical section
-            else if (j == x && i > 1 && i < y)
-                std::cout << "B";
-
-            else 
-                std::cout << " ";
-            
-        }
-
-        std::cout << "\n";
-    } 
-}

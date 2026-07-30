@@ -31,42 +31,44 @@ o
 |
 o
 */
-
-void QuadA(int x, int y)
+namespace piscine
 {
-    for (int i {1}; i <= y; ++i) // Rows
+    void QuadA(int x, int y)
     {
-        for (int j {1}; j <= x; ++j) // Columns
+        for (int i {1}; i <= y; ++i) // Rows
         {
-            // Top Corners
-            if(i == 1 && (j == 1 || j == x)) 
-                std::cout << "o";
+            for (int j {1}; j <= x; ++j) // Columns
+            {
+                // Top Corners
+                if(i == 1 && (j == 1 || j == x)) 
+                    std::cout << "o";
 
-            // Bottom Corners
-            else if (i == y && (j == 1 || j == x))
-                std::cout << "o";
-            
-            // Top middle horizontal section
-            else if (i == 1 && j > 1 && j < x) 
-                std::cout << "-";
-            
-            // Bottom middle horizontal section
-            else if (i == y && j > 1 && j < x)
-                std::cout << "-";
+                // Bottom Corners
+                else if (i == y && (j == 1 || j == x))
+                    std::cout << "o";
+                
+                // Top middle horizontal section
+                else if (i == 1 && j > 1 && j < x) 
+                    std::cout << "-";
+                
+                // Bottom middle horizontal section
+                else if (i == y && j > 1 && j < x)
+                    std::cout << "-";
 
-            // Right middle vertical section
-            else if (j == 1 && i > 1 && i < y)
-                std::cout << "|";
+                // Right middle vertical section
+                else if (j == 1 && i > 1 && i < y)
+                    std::cout << "|";
 
-            // Left middle vertical section
-            else if (j == x && i > 1 && i < y)
-                std::cout << "|";
+                // Left middle vertical section
+                else if (j == x && i > 1 && i < y)
+                    std::cout << "|";
 
-            else 
-                std::cout << " ";
-            
-        }
+                else 
+                    std::cout << " ";
+                
+            }
 
-        std::cout << "\n";
-    } 
+            std::cout << "\n";
+        } 
+    }
 }
