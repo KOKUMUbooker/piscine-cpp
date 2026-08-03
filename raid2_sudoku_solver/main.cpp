@@ -1,4 +1,7 @@
 #include <iostream>
+#include <vector>
+#include <string>
+#include "include/utils.hpp"
 
 /*
 Create a program that resolves a sudoku.
@@ -26,8 +29,22 @@ $ go run . ".96.4...1" "1...6.1.4" "5.481.39." "..795..43" ".3..8...." "4.5.23.1
 Error$
 */
 
-int main()
+int main(int argc, char* argv[])
 {
+    if (argc == 1)
+    {
+        std::cout << "Error\n";
+        return EXIT_SUCCESS;
+    }
+
+    std::vector<std::string> args (argv+1, argv+argc); // From element 1(exclude Program name) to last
+    std::cout << "Len : " << args.size() << "\n"; 
+
+    if (!ValidateArgs(args))
+    {
+        std::cout << "Error\n";
+        return EXIT_SUCCESS;
+    }
 
     return EXIT_SUCCESS;
 }
