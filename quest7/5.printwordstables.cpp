@@ -47,7 +47,6 @@ namespace piscine
 
     void PrintVector(const std::vector<std::string>& vec)
     {
-        std::cout <<vec.size() << "\n";
         int len {static_cast<int>(vec.size())};
         std::cout << "[";
         for(int i {0}; i < len; ++i)
