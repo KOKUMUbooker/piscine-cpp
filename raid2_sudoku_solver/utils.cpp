@@ -1,3 +1,4 @@
+#include <iostream>
 #include <string>
 #include <vector>
 #include "include/utils.hpp"
@@ -15,4 +16,23 @@ bool ValidateArgs(const std::vector<std::string>& args)
     }
 
     return true;
+}
+
+void PrintGrid(const std::vector<std::string>& args)
+{
+    int argLen {static_cast<int>(args.size())};
+    
+    for (int i {0}; i < argLen; ++i)
+    {
+        int rowLen {static_cast<int>(args[i].size())};
+
+        for (int j {0}; j < rowLen; ++j)
+        {
+            std::cout << args[i][j];
+
+            if (j != rowLen - 1)
+                std::cout << ' ';
+        }
+        std::cout << "\n";
+    }
 }

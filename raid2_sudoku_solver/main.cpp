@@ -37,14 +37,18 @@ int main(int argc, char* argv[])
         return EXIT_SUCCESS;
     }
 
-    std::vector<std::string> args (argv+1, argv+argc); // From element 1(exclude Program name) to last
-    std::cout << "Len : " << args.size() << "\n"; 
+    std::vector<std::string> grid (argv+1, argv+argc); // From element 1(exclude Program name) to last
 
-    if (!ValidateArgs(args))
+    if (!ValidateArgs(grid))
     {
         std::cout << "Error\n";
         return EXIT_SUCCESS;
     }
+
+    // Solve
+
+    // Print
+    PrintGrid(grid);    
 
     return EXIT_SUCCESS;
 }
