@@ -48,7 +48,11 @@ int main(int argc, char* argv[])
 
     // Solve
     bool gridSolved = Solve(grid);
-
+    if (!gridSolved)
+    {
+        std::cout << "Error\n";
+        return EXIT_SUCCESS;
+    }
 
     // Print
     PrintGrid(grid);    
