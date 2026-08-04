@@ -4,10 +4,25 @@
 
 bool Solve(std::vector<std::string>& grid)
 {
+    int row {0}, col {0};
 
+    bool openSlotFound { FindUnassignedLocation(grid, row, col) };
+    if (!openSlotFound)
+        return true;
+
+    for (char i {'0'}; i <= '9'; ++i)
+    {
+        // Check for validity of i in openslot
+
+        // If No violations found recursively call Solve
+
+        // If the next recursivecall failed, undo the current row and col values in grid & try next value in next iteration
+    }
+
+    return false; // Means values(0-9) failed to be placed at the current row & col 
 }
 
-void FindUnassignedLocation(const std::vector<std::string>& grid, int& row, int& col)
+bool FindUnassignedLocation(const std::vector<std::string>& grid, int& row, int& col)
 {
     int rowLen {static_cast<int>(grid.size())};
     for (int i {0}; i < rowLen; ++i)
@@ -19,7 +34,10 @@ void FindUnassignedLocation(const std::vector<std::string>& grid, int& row, int&
             {
                 row = i;
                 col = j;
+                return true;
             }
         }
     }
+
+    return false;
 }
