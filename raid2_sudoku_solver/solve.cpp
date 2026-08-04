@@ -41,3 +41,34 @@ bool FindUnassignedLocation(const std::vector<std::string>& grid, int& row, int&
 
     return false;
 }
+
+bool NoConFlicts(const std::vector<std::string>& grid, int row, int col, char num)
+{
+    // Check if no. exists in the x axis
+    for (int i {0}; i < grid[row].size(); ++i)
+    {
+        if (grid[row][i] == num)
+            return false;
+    }
+
+    // Check if no. exists in the y axis
+    for (int i {0}; i < grid.size(); ++i)
+    {
+        if (grid[i][col] == num)
+            return false;
+    }
+
+    // Check if no. exists in the cells 3*3 mini grid
+    int boxRowStart { (row/3) * 3 };
+    int boxColStart { (row/3) * 3 };
+    for (int r {0}; r < boxRowStart+3; ++r)
+    {
+        for (int c {0}; c < boxColStart+3; ++c)
+        {
+            if (grid[r][c] == num)
+                return false;
+        }
+    }
+
+    return true;
+}
