@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include "include/utils.hpp"
+#include "include/solve.hpp"
 
 /*
 Create a program that resolves a sudoku.
@@ -46,6 +47,8 @@ int main(int argc, char* argv[])
     }
 
     // Solve
+    bool gridSolved = Solve(grid);
+
 
     // Print
     PrintGrid(grid);    
