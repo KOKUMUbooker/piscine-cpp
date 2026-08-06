@@ -39,12 +39,12 @@ namespace piscine
         bool islower {c >= 'a' && c <= 'z'};
         while (count < 14)
         {   
+            ++res;
+            ++count;
             if (islower && res == ('z'+1))
                 res = 'a';
             else if (!islower && res == ('Z'+1))
                 res = 'A';
-            ++res;
-            ++count;
         }
 
         return res;
