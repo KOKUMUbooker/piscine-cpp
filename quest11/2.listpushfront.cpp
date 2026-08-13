@@ -1,5 +1,6 @@
 #include <iostream>
 #include <any>
+#include <string>
 
 /*
 Write a function ListPushFront that inserts a new element NodeL at the beginning of the list l while using the structure List
@@ -44,6 +45,10 @@ namespace piscine
         public:
         std::any Data;
         NodeL* Next;
+
+        NodeL(std::any data, NodeL* next=nullptr)
+            : Data {data}, Next {next}
+        {}
     };
 
     class List
@@ -54,7 +59,15 @@ namespace piscine
 
         void ListPushFront(std::any data)
         {
-            
+            NodeL* newNode {new NodeL{data} };
+            if (Head == nullptr)
+                Head = newNode;
+            else 
+            {
+                NodeL* temp {Head};
+                Head = newNode;
+                Head->Next = temp;
+            }
         }
 
         // Deallocate memory
@@ -74,6 +87,18 @@ namespace piscine
 
 int main()
 {
+    piscine::List link {};
+
+	link.ListPushFront(std::string("Hello"));
+	link.ListPushFront(std::string("man"));
+	link.ListPushFront(std::string("how are you"));
+
+    piscine::NodeL* node {link.Head};
+    while (node != nullptr)
+    {
+        std::cout << std::any_cast<std::string>(node->Data) << " ";
+        node = node->Next;
+    }
 
     return EXIT_SUCCESS;
 }
