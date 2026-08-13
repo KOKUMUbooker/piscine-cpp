@@ -67,27 +67,30 @@ namespace piscine
                 delete temp;
             }
         }
+
+         void ListPushBack(std::string data)
+        {
+            NodeL* newNode {new NodeL{data}};
+
+            if (Head == nullptr)
+            {
+                Head = newNode;
+            }
+            else
+            {
+                if (Head->Next == nullptr)
+                    Head->Next = newNode;
+
+                if (Tail == nullptr)
+                    Tail = newNode;
+                else 
+                {
+                    Tail->Next = newNode;
+                    Tail = newNode;
+                }
+            }
+        }
     };
-    
-    void ListPushBack(List* l, std::string data)
-    {
-        NodeL* newNode {new NodeL{data}};
-
-        if (l->Head == nullptr)
-        {
-            l->Head = newNode;
-        }
-        else
-        {
-            if (l->Head->Next == nullptr)
-                l->Head->Next = newNode;
-
-            if (l->Tail == nullptr)
-                l->Tail = newNode;
-            else 
-                l->Tail->Next = newNode;
-        }
-    }
 
 } // namespace piscine
 
@@ -96,9 +99,9 @@ int main()
 {
     piscine::List link {};
 
-    piscine::ListPushBack(&link, "Hello");
-    piscine::ListPushBack(&link, "man");
-    piscine::ListPushBack(&link, "how are you");
+    link.ListPushBack("Hello");
+    link.ListPushBack("man");
+    link.ListPushBack("how are you");
 
     piscine::NodeL* node {link.Head};
     while (node != nullptr)

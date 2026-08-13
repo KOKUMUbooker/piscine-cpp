@@ -76,7 +76,7 @@ namespace piscine
            }  
         }
 
-        void ListPushBack(std::any data)
+         void ListPushBack(std::any data)
         {
             NodeL* newNode {new NodeL{data}};
 
@@ -92,7 +92,10 @@ namespace piscine
                 if (Tail == nullptr)
                     Tail = newNode;
                 else 
+                {
                     Tail->Next = newNode;
+                    Tail = newNode;
+                }
             }
         }
 
