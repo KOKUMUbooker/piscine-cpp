@@ -1,11 +1,12 @@
 #include <iostream>
 #include <string>
+#include <queue>
 
 /*
-Write a function, BTreeMin, that returns the node with the minimum value in the tree given by root
+Write a function, BTreeApplyByLevel, that applies the function given by f, to each node of the tree given by root.
 
 Expected function
-func BTreeMin(root *TreeNode) *TreeNode {
+func BTreeApplyByLevel(root *TreeNode, f func(...interface{}) (int, error))  {
 
 }
 
@@ -14,10 +15,12 @@ Usage :
 	piscine.BTreeInsertData(root, "1")
 	piscine.BTreeInsertData(root, "7")
 	piscine.BTreeInsertData(root, "5")
-	min := piscine.BTreeMin(root)
-	fmt.Println(min.Data)
+	piscine.BTreeApplyByLevel(root, fmt.Println)
 Output : 
+4
 1
+7
+5
 */
 
 namespace piscine
@@ -35,17 +38,31 @@ namespace piscine
         {}
     };
 
-    TreeNode* BTreeMin(TreeNode* root)
+    void BTreeApplyByLevel(
+        TreeNode* root,
+        void (*f)(TreeNode*)
+    )
     {
         if (root == nullptr)
-            return nullptr;
+            return;
 
-        TreeNode* current {root};
+        std::queue<TreeNode*> queue;
 
-        while (current->Left != nullptr)
-            current = current->Left;
+        queue.push(root);
 
-        return current;
+        while (!queue.empty())
+        {
+            TreeNode* current {queue.front()};
+            queue.pop();
+
+            f(current);
+
+            if (current->Left != nullptr)
+                queue.push(current->Left);
+
+            if (current->Right != nullptr)
+                queue.push(current->Right);
+        }
     }
 
     void BTreeInsertData(TreeNode* root,std::string data)
@@ -83,8 +100,12 @@ int main()
     piscine::BTreeInsertData(Root,std::string("7"));
     piscine::BTreeInsertData(Root,std::string("5"));
 
-    piscine::TreeNode* min { piscine::BTreeMin(Root) };
-    std::cout << "Min: " << min->Data << "\n";
+    auto PrintFn = [](piscine::TreeNode* node)
+    {
+        std::cout << node->Data << "\n";
+    };
+
+    piscine::BTreeApplyByLevel(Root, PrintFn);
 
     return EXIT_SUCCESS;
 }
